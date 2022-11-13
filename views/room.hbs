@@ -1,0 +1,115 @@
+<div class="container">
+
+    <header>
+        <nav class="navbar navbar-white bg-warning p-0">
+            <span class="container-fluid">
+                <span class="navbar-brand mb-0 h1">
+                    <h2 class="text-white"><i class="fa-solid fa-briefcase"></i> コミ〜ル</h2>
+                </span>
+                <form class="d-flex">
+                    <div class="room-exit">
+                        <input type="button" class="btn btn-danger" value="退室する" class="common-button room-exit_button"
+                            onclick="exit();">
+                    </div>
+                </form>
+            </span>
+        </nav>
+    </header>
+
+
+    <div class="row">
+        <div class="col-lg-2">
+            <h3><i class="fa-solid fa-users"></i> User</h3>
+            <div class="card" style="height: 35rem;">
+                <nav class="username">
+                    <div class="room-login_user">
+                        <div class="card-header">
+                            {{userName}}(自分)
+                            <input id="userName" type="hidden" value="{{userName}}">
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div id="userName1"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="col-8">
+                    <form method="post" action="/">
+                        <h3><i class="fa-regular fa-comments"></i> Chat</h3>
+                        <div class="top">
+                            <div class="main">
+                                <div class="room-thread">
+                                    <div id="thread"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <div class="button-margin">
+                                <input id="sort" type="button" value="古い順にする" class="btn btn-success"
+                                    class="common-button room-old_sort_button" onclick="oldSort();">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-4">
+                    <form method="post" action="/">
+                        <h3><i class="fa-regular fa-file-lines"></i> Memo</h3>
+                        <div class="top">
+                            <div class="main">
+                                <div class="card" style="height: 22rem;">
+                                    <div class="room-thread">
+                                        <div id="memo"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-8">
+                    <form method="post" action="/">
+                        <div class="mainsub">
+                            <div class="room-all">
+                                <div class="room-message">
+                                    <textarea id="message" rows="4" class="form-control" aria-label="With textarea"
+                                        class="room-message_textarea" placeholder="投稿文を入力してください"
+                                        onkeydown="publishEnter()"></textarea>
+                                </div>
+                            </div>
+                            <div class="message-template">
+
+                                <input type="button" class="btn btn-outline-info" value="了解しました" class="common-button"
+                                    onclick="template('了解しました')">
+                                <input type="button" class="btn btn-outline-info" value="ありがとうございます"
+                                    class="common-button" onclick="template('ありがとうございます')">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-4">
+                    <div class="room-submit" class="fixed-bottom">
+                        <input type="button" value="投稿" class="btn btn-primary common-button room-publish_button"
+                            onclick="publish();">
+                        <input type="button" value="メモ" class="btn btn-secondary common-button room-memo_button"
+                            onclick="memo();">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/javascripts/socket.js"></script>
+<script src="/javascripts/enter.js"></script>
+<script src="/javascripts/publish.js"></script>
+<script src="/javascripts/memo.js"></script>
+<script src="/javascripts/exit.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script>
